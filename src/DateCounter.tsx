@@ -18,11 +18,11 @@ function DateCounter() {
     setCount((count) => count + step);
   };
 
-  const defineCount = function (e) {
+  const defineCount = function (e: { target: { value: any } }) {
     setCount(Number(e.target.value));
   };
 
-  const defineStep = function (e) {
+  const defineStep = function (e: { target: { value: any } }) {
     setStep(Number(e.target.value));
   };
 
