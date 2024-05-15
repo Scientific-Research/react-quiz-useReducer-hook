@@ -5,13 +5,16 @@ const reducer = (state: any, action: any) => {
 
   switch (action.type) {
     case "dec":
-      return { ...state, count: state.count - 1 };
+      return {
+        ...state,
+        count: state.count - state.step,
+      };
     case "inc":
-      return { ...state, count: state.count + 1 };
+      return { ...state, count: state.count + state.step };
     case "setCount":
       return { ...state, count: action.payload };
     case "setStep":
-      return { ...state, count: action.payload };
+      return { ...state, step: action.payload };
     case "reset":
       return { ...state, count: (state.count = 0), step: (state.step = 0) };
     default:
