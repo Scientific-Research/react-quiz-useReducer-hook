@@ -1,8 +1,18 @@
 import { useReducer } from "react";
 
+interface State {
+  count: number;
+  step: number;
+}
+
+interface Action {
+  type: "dec" | "inc" | "setCount" | "setStep" | "reset";
+  payload?: number; // Optional payload for "setCount" and "setStep"
+}
+
 const initialState = { count: 0, step: 1 };
 
-const reducer = (state: any, action: any) => {
+const reducer = (state: State, action: Action) => {
   console.log(state, action);
 
   switch (action.type) {
@@ -14,9 +24,9 @@ const reducer = (state: any, action: any) => {
     case "inc":
       return { ...state, count: state.count + state.step };
     case "setCount":
-      return { ...state, count: action.payload };
+      return { ...state, count: action.payload || 0 };
     case "setStep":
-      return { ...state, step: action.payload };
+      return { ...state, step: action.payload || 1 };
     case "reset":
       // return { ...state, count: (state.count = 0), step: (state.step = 1) }; OR:
       return initialState;
@@ -57,12 +67,12 @@ export default function DateCounter() {
     // setCount((count) => count + step);
   };
 
-  const defineCount = function (e: { target: { value: string } }) {
+  const defineCount = function (e: React.ChangeEvent<HTMLInputElement>) {
     // setCount(Number(e.target.value));
     dispatch({ type: "setCount", payload: Number(e.target.value) });
   };
 
-  const defineStep = function (e: { target: { value: string } }) {
+  const defineStep = function (e: React.ChangeEvent<HTMLInputElement>) {
     // setStep(Number(e.target.value));
     dispatch({ type: "setStep", payload: Number(e.target.value) });
   };
