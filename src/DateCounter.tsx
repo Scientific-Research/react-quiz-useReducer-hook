@@ -57,12 +57,12 @@ export default function DateCounter() {
     // setCount((count) => count + step);
   };
 
-  const defineCount = function (e: { target: { value: any } }) {
+  const defineCount = function (e: { target: { value: string } }) {
     // setCount(Number(e.target.value));
     dispatch({ type: "setCount", payload: Number(e.target.value) });
   };
 
-  const defineStep = function (e: { target: { value: any } }) {
+  const defineStep = function (e: { target: { value: string } }) {
     // setStep(Number(e.target.value));
     dispatch({ type: "setStep", payload: Number(e.target.value) });
   };
