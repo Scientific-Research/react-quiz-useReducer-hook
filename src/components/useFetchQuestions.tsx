@@ -8,17 +8,17 @@ export const useFetchQuestions = (
     (arg0: { type: string; payload: Response }): void;
   }
 ) => {
-  try {
-    useEffect(() => {
-      const getQuestions = async () => {
+  useEffect(() => {
+    const getQuestions = async () => {
+      try {
         const data = await fetch("http://localhost:8000/questions");
         const res = await data.json();
         console.log(res);
         dispatch({ type: dataReceived, payload: res });
-      };
-      getQuestions();
-    }, []);
-  } catch (error) {
-    dispatch({ type: dataFailed });
-  }
+      } catch (error) {
+        dispatch({ type: dataFailed });
+      }
+    };
+    getQuestions();
+  }, []);
 };
