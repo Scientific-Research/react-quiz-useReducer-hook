@@ -3,11 +3,16 @@ export const Main = ({ children }: { children: React.ReactNode }) => {
   return <main className="main">{children}</main>;
 };
 */
-export const Main = () => {
+
+import Loader from "./Loader";
+import Error from "./Error";
+
+export const Main = ({ state }: any) => {
+  const { question, status } = state;
   return (
     <>
-      <p>1/15</p>
-      <p>Question?</p>
+      {status === "loading" && <Loader />}
+      {status === "error" && <Error />}
     </>
   );
 };

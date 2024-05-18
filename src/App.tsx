@@ -37,9 +37,8 @@ export default function App() {
 
   return (
     <div className="App">
-      {/* <DateCounter /> */}
       <Header />
-      <Main />
+      <Main state={state} />
     </div>
   );
 }
