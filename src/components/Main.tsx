@@ -14,7 +14,7 @@ export const Main = ({ state }: any) => {
     <>
       {status === "loading" && <Loader />}
       {status === "error" && <Error />}
-      {status === "ready" && <StartScreen />}
+      {status === "ready" && <StartScreen question={question} />}
     </>
   );
 };
