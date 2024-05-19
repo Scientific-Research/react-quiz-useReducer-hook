@@ -6,6 +6,7 @@ export const Main = ({ children }: { children: React.ReactNode }) => {
 
 import Loader from "./Loader";
 import Error from "./Error";
+import { StartScreen } from "./StartScreen";
 
 export const Main = ({ state }: any) => {
   const { question, status } = state;
@@ -13,6 +14,7 @@ export const Main = ({ state }: any) => {
     <>
       {status === "loading" && <Loader />}
       {status === "error" && <Error />}
+      {status === "ready" && <StartScreen />}
     </>
   );
 };
