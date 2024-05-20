@@ -8,13 +8,13 @@ import Loader from "./Loader";
 import Error from "./Error";
 import { StartScreen } from "./StartScreen";
 
-export const Main = ({ state }: any) => {
-  const { question, status } = state;
+export const Main = ({ questions, status }: any) => {
+  // console.log(questions);
   return (
     <>
       {status === "loading" && <Loader />}
       {status === "error" && <Error />}
-      {status === "ready" && <StartScreen question={question} />}
+      {status === "ready" && <StartScreen questions={questions} />}
     </>
   );
 };

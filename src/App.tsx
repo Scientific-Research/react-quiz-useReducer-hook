@@ -31,6 +31,10 @@ const reducer = (state: any, action: { type: any; payload: any }) => {
 
 export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const { questions, status } = state;
+  // const [{ questions, status }, dispatch] = useReducer(reducer, initialState);
+  // const numOfQuestions = questions.length;
+  // console.log(numOfQuestions);
 
   // NOTE: using custom use Hook
   useFetchQuestions("dataReceived", "dataFailed", dispatch);
@@ -38,7 +42,7 @@ export default function App() {
   return (
     <div className="App">
       <Header />
-      <Main state={state} />
+      <Main questions={questions} status={status} />
     </div>
   );
 }
