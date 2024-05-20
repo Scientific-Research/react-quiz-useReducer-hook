@@ -8,7 +8,7 @@ export const useFetchQuestions = (
   //   (arg0: { type: any; payload: any }): void;
   // }
   dispatch: // (value: any): void;
-  (arg0: { type: "dataReceived" | "dataFailed"; payload: [] }) => void
+  (arg0: { type: "dataReceived" | "dataFailed" | "start"; payload: [] }) => void
 ) => {
   useEffect(() => {
     const getQuestions = async () => {
