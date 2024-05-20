@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 
 export const useFetchQuestions = (
-  dataReceived: string,
-  dataFailed: string,
-  dispatch: {
-    (value: any): void;
-    (arg0: { type: any; payload: any }): void;
-  }
+  dataReceived: "dataReceived" | "dataFailed",
+  dataFailed: "dataReceived" | "dataFailed",
+  // dispatch: {
+  //   (value: any): void;
+  //   (arg0: { type: any; payload: any }): void;
+  // }
+  dispatch: // (value: any): void;
+  (arg0: { type: "dataReceived" | "dataFailed"; payload: [] }) => void
 ) => {
   useEffect(() => {
     const getQuestions = async () => {
@@ -16,7 +18,7 @@ export const useFetchQuestions = (
         console.log(res);
         dispatch({ type: dataReceived, payload: res });
       } catch (error) {
-        dispatch({ type: dataFailed });
+        dispatch({ type: dataFailed, payload: [] });
       }
     };
     getQuestions();
