@@ -9,7 +9,17 @@ const initialState = {
   status: "loading",
 };
 
-const reducer = (state: any, action: { type: any; payload: any }) => {
+interface State {
+  questions: {};
+  status: string;
+}
+
+interface Action {
+  type: "dataReceived" | "dataFailed";
+  payload: [];
+}
+
+const reducer = (state: State, action: Action) => {
   switch (action.type) {
     case "dataReceived":
       return {

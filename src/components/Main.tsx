@@ -8,7 +8,13 @@ import Loader from "./Loader";
 import Error from "./Error";
 import { StartScreen } from "./StartScreen";
 
-export const Main = ({ questions, status }: any) => {
+export const Main = ({
+  questions,
+  status,
+}: {
+  questions: {};
+  status: string;
+}) => {
   // console.log(questions);
   return (
     <>

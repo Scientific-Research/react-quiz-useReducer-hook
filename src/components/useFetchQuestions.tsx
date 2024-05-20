@@ -5,7 +5,7 @@ export const useFetchQuestions = (
   dataFailed: string,
   dispatch: {
     (value: any): void;
-    (arg0: { type: string; payload: Response }): void;
+    (arg0: { type: any; payload: any }): void;
   }
 ) => {
   useEffect(() => {
