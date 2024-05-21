@@ -1,13 +1,24 @@
 import { IQuestion } from "../interfaces/interfaces";
 import { Options } from "./options";
 
-export const Question = ({ question }: { question: IQuestion }) => {
+export const Question = ({
+  question,
+  dispatch,
+  answer,
+}: {
+  question: IQuestion;
+  dispatch: (arg0: {
+    type: "dataReceived" | "dataFailed" | "start" | "newAnswer";
+    payload: [];
+  }) => void;
+  answer: string;
+}) => {
   console.log(question);
 
   return (
     <>
       <h4>{question.question}</h4>
-      <Options question={question} />
+      <Options question={question} dispatch={dispatch} answer={answer} />
     </>
   );
 };

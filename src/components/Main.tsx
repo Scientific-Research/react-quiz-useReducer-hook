@@ -15,6 +15,7 @@ export const Main = ({
   status,
   dispatch,
   index,
+  answer,
 }: {
   questions: IQuestion[];
   status: string;
@@ -22,10 +23,11 @@ export const Main = ({
   dispatch: // (value: any): void;
   // (arg0: { type: "dataReceived" | "dataFailed"; payload: [] }) => void;
   (arg0: {
-    type: "dataReceived" | "dataFailed" | "start";
+    type: "dataReceived" | "dataFailed" | "start" | "newAnswer";
     payload: [];
   }) => void;
   index: number;
+  answer: string;
 }) => {
   // console.log(questions);
   // 'loading', 'error', 'ready', 'active', 'finished'
@@ -36,7 +38,13 @@ export const Main = ({
       {status === "ready" && (
         <StartScreen questions={questions} dispatch={dispatch} />
       )}
-      {status === "active" && <Question question={questions[index]} />}
+      {status === "active" && (
+        <Question
+          question={questions[index]}
+          dispatch={dispatch}
+          answer={answer}
+        />
+      )}
     </>
   );
 };

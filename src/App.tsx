@@ -9,6 +9,7 @@ const initialState = {
   // 'loading', 'error', 'ready', 'active', 'finished'
   status: "loading",
   index: 0,
+  answer: null,
 };
 
 // {
@@ -22,10 +23,11 @@ interface IState {
   questions: IQuestion[];
   status: string;
   index: number;
+  answer: any;
 }
 
 interface IAction {
-  type: "dataReceived" | "dataFailed" | "start";
+  type: "dataReceived" | "dataFailed" | "start" | "newAnswer";
   payload: [];
 }
 
@@ -48,6 +50,11 @@ const reducer = (state: IState, action: IAction) => {
         ...state,
         status: "active",
       };
+    case "newAnswer":
+      return {
+        ...state,
+        answer: action.payload,
+      };
 
     default:
       throw new Error("Action unknown");
@@ -56,7 +63,7 @@ const reducer = (state: IState, action: IAction) => {
 
 export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { questions, status, index } = state;
+  const { questions, status, index, answer } = state;
   // const [{ questions, status }, dispatch] = useReducer(reducer, initialState);
   // const numOfQuestions = questions.length;
   // console.log(numOfQuestions);
@@ -72,6 +79,7 @@ export default function App() {
         status={status}
         dispatch={dispatch}
         index={index}
+        answer={answer}
       />
     </div>
   );
