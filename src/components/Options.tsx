@@ -20,7 +20,7 @@ export const Options = ({
           // className="btn btn-option"
           className={`btn btn-option ${
             index === Number(answer) ? "answer" : ""
-          }`}
+          } ${index === question.correctOption ? "correct" : "wrong"}`}
           onClick={() => dispatch({ type: "newAnswer", payload: index })}
         >
           {option}
