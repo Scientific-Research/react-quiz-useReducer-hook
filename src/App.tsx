@@ -8,6 +8,7 @@ const initialState = {
   questions: [],
   // 'loading', 'error', 'ready', 'active', 'finished'
   status: "loading",
+  index: 0,
 };
 
 // {
@@ -20,6 +21,7 @@ const initialState = {
 interface IState {
   questions: IQuestion[];
   status: string;
+  index: number;
 }
 
 interface IAction {
@@ -54,7 +56,7 @@ const reducer = (state: IState, action: IAction) => {
 
 export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { questions, status } = state;
+  const { questions, status, index } = state;
   // const [{ questions, status }, dispatch] = useReducer(reducer, initialState);
   // const numOfQuestions = questions.length;
   // console.log(numOfQuestions);
@@ -65,7 +67,12 @@ export default function App() {
   return (
     <div className="App">
       <Header />
-      <Main questions={questions} status={status} dispatch={dispatch} />
+      <Main
+        questions={questions}
+        status={status}
+        dispatch={dispatch}
+        index={index}
+      />
     </div>
   );
 }
