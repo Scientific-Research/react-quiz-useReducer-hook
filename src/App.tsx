@@ -70,7 +70,8 @@ const reducer = (state: IState, action: IAction) => {
               state.points,
       };
     case "nextQuestion":
-      return { ...state, index: state.index + 1 };
+      // answer: null => will set the answer to the default mode => it doesn't show the answers!
+      return { ...state, index: state.index + 1, answer: null };
 
     default:
       throw new Error("Action unknown");
