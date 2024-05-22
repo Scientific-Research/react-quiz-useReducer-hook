@@ -11,7 +11,7 @@ export const Progress = ({
     <>
       <header className="progress">
         <p>
-          Question <strong>{index}</strong> / {questions.length}
+          Question <strong>{index + 1}</strong> / {questions.length}
         </p>
       </header>
     </>
