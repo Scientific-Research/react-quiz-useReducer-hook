@@ -9,6 +9,7 @@ import Error from "./Error";
 import { StartScreen } from "./StartScreen";
 import { Question } from "./Question";
 import { IQuestion } from "../interfaces/interfaces";
+import { NextButton } from "./NextButton";
 
 export const Main = ({
   questions,
@@ -23,7 +24,12 @@ export const Main = ({
   dispatch: // (value: any): void;
   // (arg0: { type: "dataReceived" | "dataFailed"; payload: [] }) => void;
   (arg0: {
-    type: "dataReceived" | "dataFailed" | "start" | "newAnswer";
+    type:
+      | "dataReceived"
+      | "dataFailed"
+      | "start"
+      | "newAnswer"
+      | "nextQuestion";
     // payload: any;
     payload: string | boolean | null | undefined | number;
   }) => void;
@@ -40,11 +46,14 @@ export const Main = ({
         <StartScreen questions={questions} dispatch={dispatch} />
       )}
       {status === "active" && (
-        <Question
-          question={questions[index]}
-          dispatch={dispatch}
-          answer={answer}
-        />
+        <>
+          <Question
+            question={questions[index]}
+            dispatch={dispatch}
+            answer={answer}
+          />
+          <NextButton dispatch={dispatch} answer={answer} />
+        </>
       )}
     </>
   );

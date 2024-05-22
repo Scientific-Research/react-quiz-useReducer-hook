@@ -13,7 +13,7 @@ interface IState {
 }
 
 interface IAction {
-  type: "dataReceived" | "dataFailed" | "start" | "newAnswer";
+  type: "dataReceived" | "dataFailed" | "start" | "newAnswer" | "nextQuestion";
   // payload: string | boolean | null | undefined | number;
   payload: any;
 }
@@ -22,6 +22,7 @@ const initialState: IState = {
   questions: [],
   // 'loading', 'error', 'ready', 'active', 'finished'
   status: "loading",
+  // when index value changes, it shows that the current question already read and we want to move to the next question!
   index: 0,
   answer: null,
   points: 0,
@@ -68,6 +69,8 @@ const reducer = (state: IState, action: IAction) => {
             : // otherweise, it stays the same!
               state.points,
       };
+    case "nextQuestion":
+      return { ...state, index: state.index + 1 };
 
     default:
       throw new Error("Action unknown");
