@@ -18,6 +18,7 @@ export const Main = ({
   dispatch,
   index,
   answer,
+  points,
 }: {
   questions: IQuestion[];
   status: string;
@@ -36,6 +37,7 @@ export const Main = ({
   }) => void;
   index: number;
   answer: number;
+  points: number;
 }) => {
   // console.log(questions);
   // 'loading', 'error', 'ready', 'active', 'finished'
@@ -48,7 +50,7 @@ export const Main = ({
       )}
       {status === "active" && (
         <>
-          <Progress index={index} questions={questions} />
+          <Progress index={index} questions={questions} points={points} />
 
           <Question
             question={questions[index]}

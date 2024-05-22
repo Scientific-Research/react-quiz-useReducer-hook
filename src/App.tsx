@@ -80,7 +80,7 @@ const reducer = (state: IState, action: IAction) => {
 
 export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { questions, status, index, answer } = state;
+  const { questions, status, index, answer, points } = state;
   // const [{ questions, status }, dispatch] = useReducer(reducer, initialState);
   // const numOfQuestions = questions.length;
   // console.log(numOfQuestions);
@@ -97,6 +97,7 @@ export default function App() {
         dispatch={dispatch}
         index={index}
         answer={answer}
+        points={points}
       />
     </div>
   );
