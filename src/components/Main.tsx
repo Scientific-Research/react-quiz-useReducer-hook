@@ -10,6 +10,7 @@ import { StartScreen } from "./StartScreen";
 import { Question } from "./Question";
 import { IQuestion } from "../interfaces/interfaces";
 import { NextButton } from "./NextButton";
+import { Progress } from "./Progress";
 
 export const Main = ({
   questions,
@@ -47,6 +48,8 @@ export const Main = ({
       )}
       {status === "active" && (
         <>
+          <Progress index={index} questions={questions} />
+
           <Question
             question={questions[index]}
             dispatch={dispatch}
