@@ -7,7 +7,7 @@ export const StartScreen = ({
   questions: IQuestion[];
   dispatch: (arg0: {
     type: "dataReceived" | "dataFailed" | "start";
-    payload: [];
+    payload: null;
   }) => void;
 }) => {
   // console.log(questions);
@@ -21,7 +21,7 @@ export const StartScreen = ({
         onClick={() =>
           dispatch({
             type: "start",
-            payload: [],
+            payload: null,
           })
         }
       >

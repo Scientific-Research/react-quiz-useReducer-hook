@@ -24,7 +24,8 @@ export const Main = ({
   // (arg0: { type: "dataReceived" | "dataFailed"; payload: [] }) => void;
   (arg0: {
     type: "dataReceived" | "dataFailed" | "start" | "newAnswer";
-    payload: [];
+    // payload: any;
+    payload: string | boolean | null | undefined | number;
   }) => void;
   index: number;
   answer: number;

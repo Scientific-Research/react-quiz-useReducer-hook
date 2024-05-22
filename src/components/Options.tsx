@@ -8,7 +8,7 @@ export const Options = ({
   question: IQuestion;
   dispatch: (arg0: {
     type: "dataReceived" | "dataFailed" | "start" | "newAnswer";
-    payload: any;
+    payload: number;
   }) => void;
   answer: number;
 }) => {

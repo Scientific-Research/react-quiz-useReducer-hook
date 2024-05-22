@@ -9,7 +9,7 @@ export const Question = ({
   question: IQuestion;
   dispatch: (arg0: {
     type: "dataReceived" | "dataFailed" | "start" | "newAnswer";
-    payload: [];
+    payload: number;
   }) => void;
   answer: number;
 }) => {

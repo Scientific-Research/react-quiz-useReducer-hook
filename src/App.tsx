@@ -4,7 +4,20 @@ import { useFetchQuestions } from "./components/useFetchQuestions";
 import { useReducer } from "react";
 import { IQuestion } from "./interfaces/interfaces";
 
-const initialState = {
+interface IState {
+  questions: IQuestion[];
+  status: string;
+  index: number;
+  answer: null;
+}
+
+interface IAction {
+  type: "dataReceived" | "dataFailed" | "start" | "newAnswer";
+  // payload: string | boolean | null | undefined | number;
+  payload: any;
+}
+
+const initialState: IState = {
   questions: [],
   // 'loading', 'error', 'ready', 'active', 'finished'
   status: "loading",
@@ -18,18 +31,6 @@ const initialState = {
 //   "correctOption": 1,
 //   "points": 10
 // },
-
-interface IState {
-  questions: IQuestion[];
-  status: string;
-  index: number;
-  answer: any;
-}
-
-interface IAction {
-  type: "dataReceived" | "dataFailed" | "start" | "newAnswer";
-  payload: [];
-}
 
 const reducer = (state: IState, action: IAction) => {
   switch (action.type) {
