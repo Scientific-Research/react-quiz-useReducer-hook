@@ -50,7 +50,12 @@ export const Main = ({
       )}
       {status === "active" && (
         <>
-          <Progress index={index} questions={questions} points={points} />
+          <Progress
+            index={index}
+            questions={questions}
+            points={points}
+            answer={answer}
+          />
 
           <Question
             question={questions[index]}
