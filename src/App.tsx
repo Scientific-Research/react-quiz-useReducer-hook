@@ -9,6 +9,7 @@ interface IState {
   status: string;
   index: number;
   answer: null;
+  points: number;
 }
 
 interface IAction {
@@ -23,6 +24,7 @@ const initialState: IState = {
   status: "loading",
   index: 0,
   answer: null,
+  points: 0,
 };
 
 // {
@@ -52,9 +54,19 @@ const reducer = (state: IState, action: IAction) => {
         status: "active",
       };
     case "newAnswer":
+      // which question is the current question?
+      const question = state.questions[state.index];
+      // const question = state.questions.at(state.index);
       return {
         ...state,
         answer: action.payload,
+        points:
+          // if the current correct option as current answer is equal to the received answer?
+          action.payload === question.correctOption
+            ? // if it is so, we want to add some pints to the current point!
+              state.points + question.points
+            : // otherweise, it stays the same!
+              state.points,
       };
 
     default:
