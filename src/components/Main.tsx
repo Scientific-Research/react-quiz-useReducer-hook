@@ -27,7 +27,7 @@ export const Main = ({
     payload: [];
   }) => void;
   index: number;
-  answer: string;
+  answer: number;
 }) => {
   // console.log(questions);
   // 'loading', 'error', 'ready', 'active', 'finished'

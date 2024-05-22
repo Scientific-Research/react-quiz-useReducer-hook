@@ -10,7 +10,7 @@ export const Options = ({
     type: "dataReceived" | "dataFailed" | "start" | "newAnswer";
     payload: any;
   }) => void;
-  answer: string;
+  answer: number;
 }) => {
   const hasAnswered = answer !== null;
   return (
@@ -19,9 +19,7 @@ export const Options = ({
         <button
           key={option}
           // className="btn btn-option"
-          className={`btn btn-option ${
-            index === Number(answer) ? "answer" : ""
-          } ${
+          className={`btn btn-option ${index === answer ? "answer" : ""} ${
             hasAnswered
               ? index === question.correctOption
                 ? "correct"

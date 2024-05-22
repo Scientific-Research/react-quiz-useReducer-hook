@@ -11,7 +11,7 @@ export const Question = ({
     type: "dataReceived" | "dataFailed" | "start" | "newAnswer";
     payload: [];
   }) => void;
-  answer: string;
+  answer: number;
 }) => {
   console.log(question);
 
