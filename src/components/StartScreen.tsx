@@ -15,7 +15,7 @@ export const StartScreen = ({
   return (
     <div className="start">
       <h2>Welcome to the React Quiz!</h2>
-      <h3>{questions.length} question(s) to test your React mastery!</h3>
+      <h3>{questions.length} questions to test your React mastery!</h3>
       <button
         className="btn btn-ui"
         onClick={() =>

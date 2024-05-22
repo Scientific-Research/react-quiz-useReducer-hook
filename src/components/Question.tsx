@@ -1,5 +1,5 @@
 import { IQuestion } from "../interfaces/interfaces";
-import { Options } from "./options";
+import { Options } from "./Options";
 
 export const Question = ({
   question,
