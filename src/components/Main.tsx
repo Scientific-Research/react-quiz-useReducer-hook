@@ -11,6 +11,7 @@ import { Question } from "./Question";
 import { IQuestion } from "../interfaces/interfaces";
 import { NextButton } from "./NextButton";
 import { Progress } from "./Progress";
+import { FinishScreen } from "./FinishScreen";
 
 export const Main = ({
   questions,
@@ -41,6 +42,11 @@ export const Main = ({
 }) => {
   // console.log(questions);
   // 'loading', 'error', 'ready', 'active', 'finished'
+
+  // let maxPossiblePoints = 0;
+  // maxPossiblePoints = maxPossiblePoints + points;
+  // or we can use reducer in JavaScript:
+  const maxPossiblePoints = questions.reduce((cur, acc) => cur + acc.points, 0);
   return (
     <>
       {status === "loading" && <Loader />}
@@ -54,6 +60,7 @@ export const Main = ({
             index={index}
             questions={questions}
             points={points}
+            maxPossiblePoints={maxPossiblePoints}
             answer={answer}
           />
 
@@ -64,6 +71,9 @@ export const Main = ({
           />
           <NextButton dispatch={dispatch} answer={answer} />
         </>
+      )}
+      {status === "finished" && (
+        <FinishScreen points={points} maxPossiblePoints={maxPossiblePoints} />
       )}
     </>
   );

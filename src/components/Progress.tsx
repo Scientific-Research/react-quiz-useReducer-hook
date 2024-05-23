@@ -4,18 +4,15 @@ export const Progress = ({
   index,
   questions,
   points,
+  maxPossiblePoints,
   answer,
 }: {
   index: number;
   questions: IQuestion[];
   points: number;
+  maxPossiblePoints: number;
   answer: number;
 }) => {
-  // let maxPossiblePoints = 0;
-  // maxPossiblePoints = maxPossiblePoints + points;
-  // or we can use reducer in JavaScript:
-  const maxPossiblePoints = questions.reduce((cur, acc) => cur + acc.points, 0);
-
   return (
     <>
       <header className="progress">
