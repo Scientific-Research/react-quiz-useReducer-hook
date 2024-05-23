@@ -1,22 +1,31 @@
+import { IQuestion } from "../interfaces/interfaces";
+
 export const NextButton = ({
   dispatch,
   answer,
+  index,
+  questions,
 }: {
   dispatch: (arg0: { type: "nextQuestion"; payload: null }) => void;
   answer: number;
+  index: number;
+  questions: IQuestion[];
 }) => {
   if (answer === null) return null;
-  return (
-    <button
-      className="btn btn-ui"
-      onClick={() =>
-        dispatch({
-          type: "nextQuestion",
-          payload: null,
-        })
-      }
-    >
-      Next
-    </button>
-  );
+  // with below if statement, when we answer the last question(15th question), we will not see the next button anymore, because there is no sixtheen question there! if (14 < 15 - 1) => the result is false => we will not see the Next button anymore!
+  if (index < questions.length - 1) {
+    return (
+      <button
+        className="btn btn-ui"
+        onClick={() =>
+          dispatch({
+            type: "nextQuestion",
+            payload: null,
+          })
+        }
+      >
+        Next
+      </button>
+    );
+  }
 };

@@ -69,7 +69,12 @@ export const Main = ({
             dispatch={dispatch}
             answer={answer}
           />
-          <NextButton dispatch={dispatch} answer={answer} />
+          <NextButton
+            dispatch={dispatch}
+            answer={answer}
+            index={index}
+            questions={questions}
+          />
         </>
       )}
       {status === "finished" && (
