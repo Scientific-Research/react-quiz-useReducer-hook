@@ -23,7 +23,7 @@ export const Main = ({
   answer,
   points,
   highscore,
-  secondRemaining,
+  secondsRemaining,
 }: {
   questions: IQuestion[];
   status: string;
@@ -47,7 +47,7 @@ export const Main = ({
   answer: number;
   points: number;
   highscore: number;
-  secondRemaining: number;
+  secondsRemaining: number;
 }) => {
   // console.log(questions);
   // 'loading', 'error', 'ready', 'active', 'finished'
@@ -79,7 +79,7 @@ export const Main = ({
             answer={answer}
           />
           <Footer>
-            <Timer dispatch={dispatch} secondRemaining={secondRemaining} />
+            <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
             <NextButton
               dispatch={dispatch}
               answer={answer}

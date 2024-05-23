@@ -4,6 +4,8 @@ import { useFetchQuestions } from "./components/useFetchQuestions";
 import { useReducer } from "react";
 import { IQuestion } from "./interfaces/interfaces";
 
+const SECS_PER_QUESTION = 30;
+
 interface IState {
   questions: IQuestion[];
   status: string;
@@ -11,7 +13,8 @@ interface IState {
   answer: null;
   points: number;
   highscore: number;
-  secondRemaining: number;
+  // secondRemaining: number;
+  secondsRemaining: number;
 }
 
 interface IAction {
@@ -37,7 +40,8 @@ const initialState: IState = {
   answer: null,
   points: 0,
   highscore: 0,
-  secondRemaining: 10, // 10 seconds
+  // secondRemaining: 10, // 10 seconds
+  secondsRemaining: 0, // 10 seconds
 };
 
 // {
@@ -65,6 +69,7 @@ const reducer = (state: IState, action: IAction) => {
       return {
         ...state,
         status: "active",
+        secondsRemaining: state.questions.length * SECS_PER_QUESTION,
       };
     case "newAnswer":
       // which question is the current question?
@@ -109,9 +114,9 @@ const reducer = (state: IState, action: IAction) => {
     case "tick":
       return {
         ...state,
-        secondRemaining: state.secondRemaining - 1,
+        secondsRemaining: state.secondsRemaining - 1,
         // if the remaning second is 0 => go to the finished page, otherweise, keep it on!
-        status: state.secondRemaining === 0 ? "finished" : state.status,
+        status: state.secondsRemaining === 0 ? "finished" : state.status,
       };
 
     default:
@@ -128,7 +133,7 @@ export default function App() {
     answer,
     points,
     highscore,
-    secondRemaining,
+    secondsRemaining,
   } = state;
   // const [{ questions, status }, dispatch] = useReducer(reducer, initialState);
   // const numOfQuestions = questions.length;
@@ -148,7 +153,7 @@ export default function App() {
         answer={answer}
         points={points}
         highscore={highscore}
-        secondRemaining={secondRemaining}
+        secondsRemaining={secondsRemaining}
       />
     </div>
   );
