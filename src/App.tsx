@@ -91,11 +91,17 @@ const reducer = (state: IState, action: IAction) => {
     case "restart":
       return {
         ...state,
-        status: "active", // after clicking on the Restart Quiz => it starts from Question 1 again!
+        status: "ready", // after clicking on the Restart Quiz => it starts from start page again!
         index: 0,
         answer: null,
         points: 0,
       };
+    // OR this one:
+    // return {
+    //   ...initialState,
+    //   questions: state.questions,
+    //   status: "ready",
+    // };
 
     default:
       throw new Error("Action unknown");
