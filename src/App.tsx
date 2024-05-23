@@ -92,23 +92,26 @@ const reducer = (state: IState, action: IAction) => {
           state.points > state.highscore ? state.points : state.highscore,
       };
     case "restart":
+      // return {
+      //   ...state,
+      //   status: "ready", // after clicking on the Restart Quiz => it starts from start page again!
+      //   index: 0,
+      //   answer: null,
+      //   points: 0,
+      //   secondRemaining: initialState.secondRemaining,
+      // };
+      // OR this one:
       return {
-        ...state,
-        status: "ready", // after clicking on the Restart Quiz => it starts from start page again!
-        index: 0,
-        answer: null,
-        points: 0,
+        ...initialState,
+        questions: state.questions,
+        status: "ready",
       };
-    // OR this one:
-    // return {
-    //   ...initialState,
-    //   questions: state.questions,
-    //   status: "ready",
-    // };
     case "tick":
       return {
         ...state,
         secondRemaining: state.secondRemaining - 1,
+        // if the remaning second is 0 => go to the finished page, otherweise, keep it on!
+        status: state.secondRemaining === 0 ? "finished" : state.status,
       };
 
     default:
