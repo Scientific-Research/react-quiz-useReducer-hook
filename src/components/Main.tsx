@@ -12,6 +12,8 @@ import { IQuestion } from "../interfaces/interfaces";
 import { NextButton } from "./NextButton";
 import { Progress } from "./Progress";
 import { FinishScreen } from "./FinishScreen";
+import { Footer } from "./Footer";
+import { Timer } from "./Timer";
 
 export const Main = ({
   questions,
@@ -73,12 +75,15 @@ export const Main = ({
             dispatch={dispatch}
             answer={answer}
           />
-          <NextButton
-            dispatch={dispatch}
-            answer={answer}
-            index={index}
-            questions={questions}
-          />
+          <Footer>
+            <Timer />
+            <NextButton
+              dispatch={dispatch}
+              answer={answer}
+              index={index}
+              questions={questions}
+            />
+          </Footer>
         </>
       )}
       {status === "finished" && (
