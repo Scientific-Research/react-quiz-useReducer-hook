@@ -1,9 +1,11 @@
 export const FinishScreen = ({
   points,
   maxPossiblePoints,
+  highscore,
 }: {
   points: number;
   maxPossiblePoints: number;
+  highscore: number;
 }) => {
   const percentage = (points / maxPossiblePoints) * 100;
 
@@ -15,9 +17,12 @@ export const FinishScreen = ({
   if (percentage === 0) emoji = "🤦‍♂️";
 
   return (
-    <p className="result">
-      <span>{emoji}</span> You scored <strong>{points}</strong> out of{" "}
-      {maxPossiblePoints} ({Math.ceil(percentage)}%)
-    </p>
+    <>
+      <p className="result">
+        <span>{emoji}</span> You scored <strong>{points}</strong> out of{" "}
+        {maxPossiblePoints} ({Math.ceil(percentage)}%)
+      </p>
+      <p className="highscore">(Highscore: {highscore} points)</p>
+    </>
   );
 };

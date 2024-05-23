@@ -20,6 +20,7 @@ export const Main = ({
   index,
   answer,
   points,
+  highscore,
 }: {
   questions: IQuestion[];
   status: string;
@@ -40,6 +41,7 @@ export const Main = ({
   index: number;
   answer: number;
   points: number;
+  highscore: number;
 }) => {
   // console.log(questions);
   // 'loading', 'error', 'ready', 'active', 'finished'
@@ -79,7 +81,11 @@ export const Main = ({
         </>
       )}
       {status === "finished" && (
-        <FinishScreen points={points} maxPossiblePoints={maxPossiblePoints} />
+        <FinishScreen
+          points={points}
+          maxPossiblePoints={maxPossiblePoints}
+          highscore={highscore}
+        />
       )}
     </>
   );
