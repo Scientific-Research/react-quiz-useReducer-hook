@@ -34,7 +34,8 @@ export const Main = ({
       | "start"
       | "newAnswer"
       | "nextQuestion"
-      | "finish";
+      | "finish"
+      | "restart";
     // payload: any;
     payload: string | boolean | null | undefined | number;
   }) => void;
@@ -85,6 +86,7 @@ export const Main = ({
           points={points}
           maxPossiblePoints={maxPossiblePoints}
           highscore={highscore}
+          dispatch={dispatch}
         />
       )}
     </>

@@ -20,7 +20,8 @@ interface IAction {
     | "start"
     | "newAnswer"
     | "nextQuestion"
-    | "finish";
+    | "finish"
+    | "restart";
   // payload: string | boolean | null | undefined | number;
   payload: any;
 }
@@ -86,6 +87,14 @@ const reducer = (state: IState, action: IAction) => {
         status: "finished",
         highscore:
           state.points > state.highscore ? state.points : state.highscore,
+      };
+    case "restart":
+      return {
+        ...state,
+        status: "active", // after clicking on the Restart Quiz => it starts from Question 1 again!
+        index: 0,
+        answer: null,
+        points: 0,
       };
 
     default:
