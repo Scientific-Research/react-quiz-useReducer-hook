@@ -13,7 +13,7 @@ export const Question = ({
   }) => void;
   answer: number;
 }) => {
-  console.log(question);
+  // console.log(question);
 
   return (
     <>

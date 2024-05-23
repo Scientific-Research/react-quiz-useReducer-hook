@@ -11,6 +11,7 @@ interface IState {
   answer: null;
   points: number;
   highscore: number;
+  secondRemaining: number;
 }
 
 interface IAction {
@@ -21,7 +22,8 @@ interface IAction {
     | "newAnswer"
     | "nextQuestion"
     | "finish"
-    | "restart";
+    | "restart"
+    | "tick";
   // payload: string | boolean | null | undefined | number;
   payload: any;
 }
@@ -35,6 +37,7 @@ const initialState: IState = {
   answer: null,
   points: 0,
   highscore: 0,
+  secondRemaining: 10, // 10 seconds
 };
 
 // {
@@ -102,6 +105,11 @@ const reducer = (state: IState, action: IAction) => {
     //   questions: state.questions,
     //   status: "ready",
     // };
+    case "tick":
+      return {
+        ...state,
+        secondRemaining: state.secondRemaining - 1,
+      };
 
     default:
       throw new Error("Action unknown");
@@ -110,7 +118,15 @@ const reducer = (state: IState, action: IAction) => {
 
 export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { questions, status, index, answer, points, highscore } = state;
+  const {
+    questions,
+    status,
+    index,
+    answer,
+    points,
+    highscore,
+    secondRemaining,
+  } = state;
   // const [{ questions, status }, dispatch] = useReducer(reducer, initialState);
   // const numOfQuestions = questions.length;
   // console.log(numOfQuestions);
@@ -129,6 +145,7 @@ export default function App() {
         answer={answer}
         points={points}
         highscore={highscore}
+        secondRemaining={secondRemaining}
       />
     </div>
   );

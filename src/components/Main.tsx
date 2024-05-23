@@ -23,6 +23,7 @@ export const Main = ({
   answer,
   points,
   highscore,
+  secondRemaining,
 }: {
   questions: IQuestion[];
   status: string;
@@ -37,7 +38,8 @@ export const Main = ({
       | "newAnswer"
       | "nextQuestion"
       | "finish"
-      | "restart";
+      | "restart"
+      | "tick";
     // payload: any;
     payload: string | boolean | null | undefined | number;
   }) => void;
@@ -45,6 +47,7 @@ export const Main = ({
   answer: number;
   points: number;
   highscore: number;
+  secondRemaining: number;
 }) => {
   // console.log(questions);
   // 'loading', 'error', 'ready', 'active', 'finished'
@@ -76,7 +79,7 @@ export const Main = ({
             answer={answer}
           />
           <Footer>
-            <Timer />
+            <Timer dispatch={dispatch} secondRemaining={secondRemaining} />
             <NextButton
               dispatch={dispatch}
               answer={answer}
