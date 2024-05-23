@@ -32,7 +32,8 @@ export const Main = ({
       | "dataFailed"
       | "start"
       | "newAnswer"
-      | "nextQuestion";
+      | "nextQuestion"
+      | "finish";
     // payload: any;
     payload: string | boolean | null | undefined | number;
   }) => void;

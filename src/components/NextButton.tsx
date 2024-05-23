@@ -6,7 +6,7 @@ export const NextButton = ({
   index,
   questions,
 }: {
-  dispatch: (arg0: { type: "nextQuestion"; payload: null }) => void;
+  dispatch: (arg0: { type: "nextQuestion" | "finish"; payload: null }) => void;
   answer: number;
   index: number;
   questions: IQuestion[];
@@ -25,6 +25,21 @@ export const NextButton = ({
         }
       >
         Next
+      </button>
+    );
+  }
+  if (index === questions.length - 1) {
+    return (
+      <button
+        className="btn btn-ui"
+        onClick={() =>
+          dispatch({
+            type: "finish",
+            payload: null,
+          })
+        }
+      >
+        Finish
       </button>
     );
   }

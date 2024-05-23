@@ -13,7 +13,13 @@ interface IState {
 }
 
 interface IAction {
-  type: "dataReceived" | "dataFailed" | "start" | "newAnswer" | "nextQuestion";
+  type:
+    | "dataReceived"
+    | "dataFailed"
+    | "start"
+    | "newAnswer"
+    | "nextQuestion"
+    | "finish";
   // payload: string | boolean | null | undefined | number;
   payload: any;
 }
@@ -72,6 +78,8 @@ const reducer = (state: IState, action: IAction) => {
     case "nextQuestion":
       // answer: null => will set the answer to the default mode => it doesn't show the answers!
       return { ...state, index: state.index + 1, answer: null };
+    case "finish":
+      return { ...state, status: "finished" };
 
     default:
       throw new Error("Action unknown");
