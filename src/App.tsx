@@ -60,17 +60,20 @@ const reducer = (state: IState, action: IAction) => {
         questions: action.payload,
         status: "ready",
       };
+
     case "dataFailed":
       return {
         ...state,
         status: "error",
       };
+
     case "start":
       return {
         ...state,
         status: "active",
         secondsRemaining: state.questions.length * SECS_PER_QUESTION,
       };
+
     case "newAnswer":
       // which question is the current question?
       const question = state.questions[state.index];
@@ -86,9 +89,11 @@ const reducer = (state: IState, action: IAction) => {
             : // otherweise, it stays the same!
               state.points,
       };
+
     case "nextQuestion":
       // answer: null => will set the answer to the default mode => it doesn't show the answers!
       return { ...state, index: state.index + 1, answer: null };
+
     case "finish":
       return {
         ...state,
@@ -96,21 +101,25 @@ const reducer = (state: IState, action: IAction) => {
         highscore:
           state.points > state.highscore ? state.points : state.highscore,
       };
+
     case "restart":
-      // return {
-      //   ...state,
-      //   status: "ready", // after clicking on the Restart Quiz => it starts from start page again!
-      //   index: 0,
-      //   answer: null,
-      //   points: 0,
-      //   secondRemaining: initialState.secondRemaining,
-      // };
-      // OR this one:
       return {
-        ...initialState,
-        questions: state.questions,
-        status: "ready",
+        ...state,
+        status: "ready", // after clicking on the Restart Quiz => it starts from start page again!
+        index: 0,
+        answer: null,
+        points: 0,
+        highscore: state.highscore,
+        secondsRemaining: 0,
       };
+
+    // OR this one:
+    // return {
+    //   ...initialState,
+    //   questions: state.questions,
+    //   status: "ready",
+    // };
+
     case "tick":
       return {
         ...state,
