@@ -7,9 +7,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "setup": "pm2 start --name mk-react-quiz-app-frontend npm -- start",
+    "setup": "pm2 start --name mk-react-quiz-app-frontend npm -- start && pm2 start --name mk-react-quiz-app-backend npm -- start",
     "start": "vite preview --host --port 5188",
-    "deploy": "git pull --no-rebase && npm i && npm run build && pm2 restart mk-react-quiz-app-frontend --update-env --time && pm2 save",
+    "deploy": "git pull --no-rebase && npm i && npm run build && npm run server && pm2 restart mk-react-quiz-app-frontend && pm2 restart mk-react-quiz-app-backend --update-env --time && pm2 save",
     "server": "json-server --watch data/questions.json --port 8000"
   },
   "dependencies": {
