@@ -1,5 +1,8 @@
 import { useEffect } from "react";
 
+import questions from "../../data/questions.json";
+import { IQuestion } from "../interfaces/interfaces";
+
 export const useFetchQuestions = (
   dataReceived: "dataReceived" | "dataFailed",
   dataFailed: "dataReceived" | "dataFailed",
@@ -8,13 +11,18 @@ export const useFetchQuestions = (
   //   (arg0: { type: any; payload: any }): void;
   // }
   dispatch: // (value: any): void;
-  (arg0: { type: "dataReceived" | "dataFailed" | "start"; payload: [] }) => void
+  (arg0: {
+    type: "dataReceived" | "dataFailed" | "start";
+    payload: IQuestion[];
+  }) => void
 ) => {
   useEffect(() => {
-    const getQuestions = async () => {
+    const getQuestions = () => {
       try {
-        const data = await fetch("http://localhost:8000/questions");
-        const res = await data.json();
+        // const data = await fetch("http://localhost:8000/questions");
+        // const res = await data.json();
+
+        const res = questions.questions.map((q) => q);
         console.log(res);
         dispatch({ type: dataReceived, payload: res });
       } catch (error) {
@@ -22,5 +30,5 @@ export const useFetchQuestions = (
       }
     };
     getQuestions();
-  }, []);
+  }, [dispatch]);
 };

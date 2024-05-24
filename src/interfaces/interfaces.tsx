@@ -1,6 +1,6 @@
 export interface IQuestion {
   question: string;
-  options: [];
+  options: string[];
   correctOption: number;
   points: number;
 }
