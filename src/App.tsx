@@ -2,34 +2,9 @@ import Header from "./components/Header";
 import { Main } from "./components/Main";
 import { useFetchQuestions } from "./components/useFetchQuestions";
 import { useReducer } from "react";
-import { IQuestion } from "./interfaces/interfaces";
+import { IState, IAction } from "./interfaces/interfaces";
 
 const SECS_PER_QUESTION = 30;
-
-interface IState {
-  questions: IQuestion[];
-  status: string;
-  index: number;
-  answer: null;
-  points: number;
-  highscore: number;
-  // secondRemaining: number;
-  secondsRemaining: number;
-}
-
-interface IAction {
-  type:
-    | "dataReceived"
-    | "dataFailed"
-    | "start"
-    | "newAnswer"
-    | "nextQuestion"
-    | "finish"
-    | "restart"
-    | "tick";
-  // payload: string | boolean | null | undefined | number;
-  payload: any;
-}
 
 const initialState: IState = {
   questions: [],
